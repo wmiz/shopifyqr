@@ -16,6 +16,8 @@ import { AppInstallations } from "./app_installations.js";
 import applyQrCodeApiEndpoints from "./middleware/qr-code-api.js";
 import { QRCodesDB } from "./qr-codes-db.js";
 
+import applyQrCodePublicEndpoints from "./middleware/qr-code-public.js";
+
 const USE_ONLINE_TOKENS = false;
 
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
@@ -86,6 +88,8 @@ export async function createServer(
   applyAuthMiddleware(app, {
     billing: billingSettings,
   });
+
+  applyQrCodePublicEndpoints(app);
 
   // Do not call app.use(express.json()) before processing webhooks with
   // Shopify.Webhooks.Registry.process().
