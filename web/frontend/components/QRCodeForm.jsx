@@ -411,6 +411,9 @@ export function QRCodeForm({ QRCode: InitialQRCode }) {
               >
                 Go to destination
               </Button>
+              <p style={{ textAlign: "center" }}>
+                <b>Scans:</b> {QRCode.scans}
+              </p>
             </Stack>
           </Card>
         </Layout.Section>
